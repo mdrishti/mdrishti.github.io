@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Storytelling Network</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    /* General Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #FAF3E0; /* Light earthy background */
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: #4C7A72; /* Teal color for the navbar */
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: #795548; /* Earthy brown highlight */
+    }
+
+    /* Tabs */
+    .tab {
+      display: none;
+      padding: 20px;
+    }
+
+    .tab.active {
+      display: block;
+    }
+
+        /* Featured Content Styling with Grid Layout */
+    .featured-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Dynamic grid */
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .content-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+      display: flex;
+      flex-direction: column; /* Column layout for image and content */
+      align-items: center; /* Center content in the card */
+      max-height: 1000px; /* Limit the maximum height */
+    }
+
+    .content-card:hover {
+      transform: scale(1.05); /* Hover effect for scaling */
+    }
+
+    .content-card img {
+  	width: 100%; /* Make the image responsive */
+	max-width: 400px; /* Limit the image width */
+	height: auto; /* Maintain aspect ratio */
+  	object-fit: cover;
+ 	margin: auto; /* Center the image */
+	align: auto;
+     }
+
+
+    .content-card .content-text {
+      padding: 15px;
+    }
+
+    .content-card h3 {
+      color: #4C7A72; /* Teal */
+      margin-bottom: 10px;
+    }
+
+    .content-card p {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .content-card a {
+      color: #795548; /* Earthy brown */
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .content-card a:hover {
+      text-decoration: underline;
+    }
+    /* Network Container */
+    .network-container {
+      width: 100%;
+      height: 500px;
+/*      border: 1px solid #4C7A72; /* Teal border */
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 10px;
+      padding: 20px;
+      background: #4C7A72; /* Teal */
+      color: white;
+      margin-top: 20px;
+    }
+
+    #home {
+	  padding: 60px;
+	  margin: 60px auto;
+	  max-width: 800px; /* Restricts the width of the content */
+	  background-color: #CBD4E2; /* Optional: add a background color */
+	  border-radius: 8px; /* Optional: round the corners */
+	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for depth */
+	}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#" class="nav-link" data-tab="home">Home</a>
+    <a href="#" class="nav-link" data-tab="research">Research</a>
+    <a href="#" class="nav-link" data-tab="media-reviews">Media Reviews</a>
+    <a href="#" class="nav-link" data-tab="travelogue">Travelogue</a>
+    <a href="#" class="nav-link" data-tab="featured-content">Featured Content</a>
+    <a href="#" class="nav-link" data-tab="contact-me">Contact Me</a>
+  </nav>
+
+  <div id="home" class="tab active">
+   <h1>About me</h1> 
+    <p>I am a Biologist, with strong interests in Science Communication and Science Policy. 
+    <p>My technical skills lie in the areas of computational biology, microbiome, and biodiversity knowledge management. For the past decade, my career has spanned working in multiple research fields in life-sciences. Over the years, my roles have changed - started as a Masters student deeply involved in Structural Biology, then a Researcher working on Metagenomics at TCS-Research, then a Doctoral Researcher exploring the evolution of a live vaccine at the University of Bern, followed by a short post-doc working on all kinds of microbial omics data.</p> 
+    <p>Currently I am working on biodiversity knowledge management for the Earth Metabolome Initiative at the University of Neuchatel. Have a look at my Research publications and repositories.</p>
+    <p>While I glide from one role to another, communicating Science and its impact has always been a parallel commitment. I have given presentations to school students, invited short talks to University graduates - also at my alma mater IIIT-Hyderabad - and written for popular Science blogs like FEMS microblog and Micro-bites. My goal is to reduce mis-communication in Science. Through my SciComm activities, I break down complex research published in peer-reviewed journals to digestible chunks of information - making sure not to dumb down the Science, but bringing clarity to the outcome of research to general audience. Have a look at my Featured Content.</p>
+  </div>
+
+  <div id="research" class="tab">
+    <h1>Research</h1>
+    <p>Explore the research network visualization below:</p>
+    <div id="network-research" class="network-container"></div>
+  </div>
+
+  <div id="science-communication" class="tab">
+    <h1>Science Communication</h1>
+    <p>Explore the science communication network visualization below:</p>
+    <div id="network-science-communication" class="network-container"></div>
+  </div>
+
+  <div id="media-reviews" class="tab">
+    <h1>Media Reviews</h1>
+    <p>Explore the media reviews network visualization below:</p>
+    <div id="network-media-reviews" class="network-container"></div>
+  </div>
+
+  <div id="travelogue" class="tab">
+    <h1>Travelogue</h1>
+    <p>Explore the travelogue network visualization below:</p>
+    <div id="network-travelogue" class="network-container"></div>
+  </div>
+
+
+  <div id="featured-content" class="tab">
+    <h1>Featured Content</h1>
+    <div class="featured-container">
+	<!-- Featured Content Cards -->
+
+    <div class="content-card">
+      <a href="https://micro-bites.org/2024/07/08/the-good-antibiotic/">
+	      <img src="https://microbitesorg.wordpress.com/wp-content/uploads/2024/07/lolamicin_antibiotic_bacteria.png" alt="Content 1 Thumbnail"></a>
+      		<div class="content-text">
+		        <h3>The good antibiotic</h3>
+			        <p>A lot has been written about the pros and cons of antibiotics – lately, more cons than pros. Antibiotics, if taken when absolutely necessary and with complete dosage are beneficial. But, if taken in the absence of necessity and with haphazard dosage, the same antibiotics spread their wrath. How so?
+
+Many antibiotics make little discrimination between the commensals– the usual and mostly harmless inhabitants of the human gut- and the pathogens– the uncommon infectious inhabitants. This leads to a wipe-out of most of the gut commensal bacterial population. 
+
+You may think that the world is done with antibiotics while praying that an occasional bacterial infection resolves itself. Alas, this is not always the case and we have definitely not heard the end of antibiotics. Yet another antibiotic-diva -- the Lolamicin -- is in town! But this time with a twist that can save the commensals.
+
+In a new article in MicroBites, I wrote about the latest research on this topic.</p>
+
+	</div>
+    </div>
+
+    <div class="content-card">
+    <a href="https://micro-bites.org/2024/02/16/clingy-yeast-perks-of-being-tenacious/">
+	    <img src="https://microbitesorg.wordpress.com/wp-content/uploads/2024/02/yeast3.png" alt="Content 2 Thumbnail"></a>
+      <div class="content-text">
+        <h3>Clingy Yeast: Perks of being tenacious</h3>
+        <p>Ever heard of Chipko andolan movement? Back in the 1970s, people from rural north India clung to the trees throughout the Indian Himalayan region to stop commercial logging activities. Following the movement, the government banned commercial logging and deployed investigations into deforestation. Who knew that a simple act of clinging to trees can bring such a positive change!! 
+
+Did you know that microbes can also become 'chipko' (clingy)? But the long-lasting impact of these tenacious microbes may not be so positive always, at least, as shown by a recent study (https://lnkd.in/dpNr8tPH).
+
+Increased adherence to abiotic surfaces like plastic can drive a microbe's evolution. In a new article @ MicroBites I write about how yeast's ability to adhere to plastic can impact its virulence. 
+
+These clingy microbes can use their clinginess to become even more clingy, filmy and filamenty!
+	</p>
+      	</div>
+      </div>
+
+    <div class="content-card">
+    <a href="https://fems-microbiology.org/femsmicroblog-reduce-energy-footprint-of-microbiology-research/">
+	    <img src="https://fems-microbiology.org/wp-content/uploads/2021/07/Microbe_Science-1024x672.png" alt="Content 3 Thumbnail"></a>
+      <div class="content-text">
+        <h3>We need to reduce the energy footprint of microbiology research</h3>
+	<p>Research labs worldwide produce around 5 million tons of plastic each year which harms the environment and our Planet’s health. While a lot of approaches to reduce, reuse and recycle lab equipment is practised, education for environmental integrity is still lacking. In this #FEMSmicroBlog, Disha Tandon discusses how microbiology researchers should set clear mandates for good lab practices to implement environmental integrity. </p>
+    </div>
+    </div>
+
+    <div class="content-card">
+    <a href="https://micro-bites.org/2023/06/07/microbes-in-stressed-environments-to-each-its-own/">
+	    <img src="https://microbitesorg.wordpress.com/wp-content/uploads/2023/05/toeachitsown_pic.png" alt="Content 3 Thumbnail"></a>
+      <div class="content-text">
+        <h3>Microbes in stressed environments: to each, its own!</h3>
+	<p>How different is gut microbiome in a healthy intestinal environment compared to the one in a stressed environment? A stressed environment can be an infected and inflamed intestine caused by a myriad of reasons.
+
+In a healthy environment, several microbes depend on each other promoting cross feeding, whereas in a stressed environment, most microbes are left to fend for themselves. I wrote about this phenomenon in my latest blog at MicroBites.
+	</p>
+      	</div>
+      </div>
+
+    <div class="content-card">
+    <a href="https://micro-bites.org/2023/02/13/pcos-and-gut-microbiota-on-the-bodys-social-media-map/">
+	    <img src="https://microbitesorg.wordpress.com/wp-content/uploads/2023/02/pcos_gutmicrobe.png" alt="Content 3 Thumbnail"></a>
+      <div class="content-text">
+        <h3>PCOS and gut microbiota on the body’s social media map</h3>
+	<p>Polycystic ovary syndrome (PCOS) affects around 10% of women worldwide, although this number may be underestimated due to a lack of proper diagnosis and reporting. One of the most prominent areas of investigation is the link between this condition and the gut microbiome. PCOS symptoms can be unclear and difficult to study, even in animal models. However, scientists worldwide have made progress in pinpointing the role of gut microbiota in PCOS.
+
+	I wrote about it on MicroBites. Check out the blog!</p>
+      	</div>
+      </div>
+
+    <div class="content-card">
+    <a href="https://micro-bites.org/2022/08/08/microbes-worms-and-plastic/">
+	    <img src="https://microbitesorg.wordpress.com/wp-content/uploads/2022/08/featuredimage-1.png" alt="Content 3 Thumbnail"></a>
+      <div class="content-text">
+        <h3>Microbes, worms and plastic</h3>
+	<p>Plastic pollution needs immediate attention worldwide. What if worms and their gut bacteria can collectively degrade plastic.</p>
+      </div>
+    </div>
+
+    <div class="content-card">
+    <a href="https://micro-bites.org/2022/07/18/a-song-of-gut-and-bacteria/">
+	    <img src="https://microbitesorg.wordpress.com/wp-content/uploads/2022/07/150551-pre.jpg" alt="Content 3 Thumbnail"></a>
+      <div class="content-text">
+        <h3>A song of gut and bacteria</h3>
+	<p>A little too crass for LinkedIn.... yet did you ever wonder why you eat, sleep, poop and repeat at the same time everyday? Your body's biological clock has a huge role in this cycle.
+
+Along with your body's biological clock, there is another watch lurking around the corner of your gut. Read more about the symphony of these two clocks in my new article at MicroBites.</p>
+      </div>
+    </div>
+     
+    <div class="content-card">
+    <a href="https://micro-bites.org/2022/04/25/tale-of-a-troubled-microbe/">
+	    <img src="https://microbitesorg.wordpress.com/wp-content/uploads/2022/04/featuredimage.png" alt="Content 3 Thumbnail"></a>
+      <div class="content-text">
+        <h3>Tale of a troubled microbe</h3>
+	<p>These days, my favourite topic in microbiology is 'Auxotrophy'. During my PhD, I have found such fascinating shades of auxotrophic microbes! And what better way for me to understand this topic even more: I wrote about it on MicroBites . 
+
+An auxotrophic microbe cannot make essential metabolites required for its survival. A recent paper (https://lnkd.in/exPEuvKc) discussed about how auxotrophic microbes can shape drug tolerance of an entire microbial community.</p>
+      </div>
+    </div>
+
+
+    <div class="content-card">
+    <a href="https://micro-bites.org/2022/03/16/a-probiotic-cream-to-treat-acne/">
+	    <img src="https://microbitesorg.wordpress.com/wp-content/uploads/2022/03/acne_drawing.png" alt="Content 3 Thumbnail"></a>
+      <div class="content-text">
+        <h3>A probiotic cream to treat acne</h3>
+	<p>Fascinating microbes! A recent study looked into the application of Lactobacilli for treating acnes. 
+
+Are these bacteria naturally present on our skin? How effective are Lactobacilli against the harmful bacteria residing in the acne? How are they administered to the acne site? I discussed about these questions on MicroBites.
+
+You can find the original study here: https://lnkd.in/eMpBpurs
+</p>
+      </div>
+    </div>
+
+    <div class="content-card">
+    <a href="https://micro-bites.org/2022/02/18/martyrs-of-infection/">
+	    <img src="https://microbitesorg.wordpress.com/wp-content/uploads/2022/02/thumbnail_martyrsofinfectionillustration1-1.png" alt="Content 3 Thumbnail"></a>
+      <div class="content-text">
+        <h3>Martyrs of infection</h3>
+	<p>How does the 'inner skin' of our body protects itself from infections? 
+
+The little cells on the inside of our intestine form this layer called epithelium. And looks like this epithelium has a mind of its own! 
+
+Read about the sacrifice of the 'inner skin' in my new article: 'Martyrs of Infection' at MicroBites.</p>
+      </div>
+    </div>
+
+    <div class="content-card">
+    <a href="https://micro-bites.org/2022/01/26/bitter-sweet-resistance/">
+	    <img src="https://microbitesorg.wordpress.com/wp-content/uploads/2022/01/thumbnail_bittersweetresistanceillustration.png" alt="Content 3 Thumbnail"></a>
+      <div class="content-text">
+        <h3>Bitter-sweet resistance</h3>
+	<p>An intuitive paper in Science Advances shed light on how microbes can modulate or even reverse their tolerance to antibiotics in presence of their peers. I wrote an article summarizing the paper at micro-bites.
+
+Also tried my hand at illustrating the story through a nerdy-microbey cartoon!</p>
+      </div>
+    </div>
+
+
+
+
+    </div>
+    </div>
+
+
+  <div id="contact-me" class="tab">
+    <h1>Contact Me</h1>
+    <form id="contact-form">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" required><br>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br>
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" required style="width: 50%; height: 200px;"></textarea><br>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Personal Website DTandon. All rights reserved.
+  </footer>
+
+  <script>
+    // Tab switching logic
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.nav-link').forEach(nav => nav.classList.remove('active'));
+        document.getElementById(event.target.dataset.tab).classList.add('active');
+        event.target.classList.add('active');
+      });
+    });
+
+    // Network Visualization with Hover Movement
+    function createNetwork(selector, nodes, links) {
+      const width = 800, height = 500;
+
+      const svg = d3.select(selector)
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+      const simulation = d3.forceSimulation(nodes)
+        .force("link", d3.forceLink(links).distance(100).id(d => d.id))
+        .force("charge", d3.forceManyBody().strength(-200))
+        .force("center", d3.forceCenter(width / 2, height / 2));
+
+      const link = svg.append("g")
+        .attr("stroke", "#999")
+        .attr("stroke-opacity", 0.6)
+        .selectAll("line")
+        .data(links)
+        .join("line")
+        .attr("stroke-width", d => Math.sqrt(d.value));
+
+      const node = svg.append("g")
+        .attr("stroke", "#fff")
+        .attr("stroke-width", 1.5)
+        .selectAll("circle")
+        .data(nodes)
+        .join("circle")
+        .attr("r", 8)
+        .attr("fill", "#4C7A72")
+        .call(drag(simulation));
+
+      node.on("mouseover", function (event, d) {
+        d3.select(this).transition().attr("r", 12);
+      });
+
+      node.on("mouseout", function (event, d) {
+        d3.select(this).transition().attr("r", 8);
+      });
+
+      node.append("title").text(d => d.id);
+
+      simulation.on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+
+        node
+          .attr("cx", d => d.x)
+          .attr("cy", d => d.y);
+      });
+
+      function drag(simulation) {
+        return d3.drag()
+          .on("start", function (event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+          })
+          .on("drag", function (event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+          })
+          .on("end", function (event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+          });
+      }
+    }
+
+    // Example network data
+    const nodes = [
+      { id: "Node 1" },
+      { id: "Node 2" },
+      { id: "Node 3" },
+      { id: "Node 4" }
+    ];
+
+    const links = [
+      { source: "Node 1", target: "Node 2", value: 1 },
+      { source: "Node 1", target: "Node 3", value: 1 },
+      { source: "Node 3", target: "Node 4", value: 1 }
+    ];
+
+    createNetwork("#network-research", nodes, links);
+    createNetwork("#network-science-communication", nodes, links);
+    createNetwork("#network-media-reviews", nodes, links);
+    createNetwork("#network-travelogue", nodes, links);
+  </script>
+</body>
+</html>
+
