@@ -1,0 +1,21 @@
+<script>
+  async function fetchORCIDWorks() {
+    const orcidId = '0009-0005-5515-1230';
+    const response = await fetch(`https://pub.orcid.org/v3.0/${orcidId}/works`, {
+      headers: { Accept: 'application/json' }
+    });
+    const data = await response.json();
+    const works = data.group.map(work => work['work-summary'][0]);
+    
+    const container = document.getElementById('orcid-works');
+    works.forEach(work => {
+      const item = document.createElement('p');
+      item.innerHTML = `<a href="${work.url.value}" target="_blank">${work.title.title.value}</a>`;
+      container.appendChild(item);
+    });
+  }
+
+  fetchORCIDWorks();
+</script>
+<div id="orcid-works">Loading works...</div>
+
