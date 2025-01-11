@@ -5,4 +5,4 @@ User-agent: Googlebot
 
 User-agent: DuckduckBot
 
-Sitemap: sitemap.xml
+Sitemap: https://mdrishti.github.io/sitemap.xml
