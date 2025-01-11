@@ -51,4 +51,6 @@ exclude:
    - vendor/ruby/
 
 markdown_ext: "md"
-
+include:
+  - "robots.txt"
+  - "sitemap.xml"
