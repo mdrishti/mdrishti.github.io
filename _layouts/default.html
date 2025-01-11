@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }}</title>
@@ -124,7 +125,7 @@
 <body>
   <menu>
     <nav>
-      <a href="#" class="nav-link" data-tab="home">Home</a>
+      <a href="/" class="nav-link" data-tab="home">Home</a>
       <a href="/research/" class="nav-link" data-tab="research">Research</a>
       <a href="/media-reviews/" class="nav-link" data-tab="media-reviews">Media Reviews</a>
       <a href="/travelogue/" class="nav-link" data-tab="travelogue">Travelogue</a>
@@ -142,15 +143,35 @@
   </footer>
 
   <script>
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', (event) => {
-        event.preventDefault();
-        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-        document.querySelectorAll('.nav-link').forEach(nav => nav.classList.remove('active'));
-        document.getElementById(event.target.dataset.tab).classList.add('active');
-        event.target.classList.add('active');
-      });
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", event => {
+      const href = event.target.getAttribute("href");
+
+      // If the href links to another page (not a tab switch), don't prevent default navigation
+      if (href && !href.startsWith("#")) {
+        // Allow normal navigation to external/static pages
+        return;
+      }
+
+      // If it is a tab link, handle the tab switching logic
+      event.preventDefault(); // Prevent default navigation for tab links
+
+      const tabId = event.target.dataset.tab; // Get the tab id (e.g., "research")
+      const tabElement = document.getElementById(tabId); // Look for the tab content element
+
+      if (tabElement) {
+        // If the tab exists on this page, switch tabs
+        document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+    	document.querySelectorAll(".nav-link").forEach(nav => nav.classList.remove("active"));
+        tabElement.classList.add("active");
+    	event.target.classList.add("active");
+      } else {
+        console.error(`Element with id "${tabId}" not found.`);
+      }
     });
+  });
+});
   </script>
 </body>
 </html>
