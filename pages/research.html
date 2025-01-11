@@ -1,21 +1,126 @@
-<script>
-  async function fetchORCIDWorks() {
-    const orcidId = '0009-0005-5515-1230';
-    const response = await fetch(`https://pub.orcid.org/v3.0/${orcidId}/works`, {
-      headers: { Accept: 'application/json' }
-    });
-    const data = await response.json();
-    const works = data.group.map(work => work['work-summary'][0]);
-    
-    const container = document.getElementById('orcid-works');
-    works.forEach(work => {
-      const item = document.createElement('p');
-      item.innerHTML = `<a href="${work.url.value}" target="_blank">${work.title.title.value}</a>`;
-      container.appendChild(item);
-    });
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Network</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <!-- Placeholder for Header, Menu, and Footer -->
+  <div id="layout"></div>
 
-  fetchORCIDWorks();
-</script>
-<div id="orcid-works">Loading works...</div>
+  <!-- Main Content -->
+  <main>
+    <h2>Research</h2>
+    <p>Explore the connections between my research papers and keywords using the network visualization below.</p>
+    <div id="visualization-container"></div>
+  </main>
+
+  <!-- Load the layout -->
+  <script>
+    // Load the common layout (header, menu, footer, and styles)
+    fetch('layout.html')
+  	.then(response => {
+    	if (!response.ok) throw new Error('Network response was not ok');
+    	return response.text();
+  	})
+  	.then(data => {
+    	document.getElementById('layout').innerHTML = data;
+  	})
+  	.catch(error => console.error('Error loading layout:', error));
+
+
+    // D3.js Visualization (Optional Example)
+    const data = {
+      nodes: [
+        { id: "Paper 1", group: 1 },
+        { id: "Paper 2", group: 1 },
+        { id: "Keyword A", group: 2 },
+        { id: "Keyword B", group: 2 },
+        { id: "Keyword C", group: 2 },
+      ],
+      links: [
+        { source: "Paper 1", target: "Keyword A" },
+        { source: "Paper 1", target: "Keyword B" },
+        { source: "Paper 2", target: "Keyword B" },
+        { source: "Paper 2", target: "Keyword C" },
+      ],
+    };
+
+    const width = 800;
+    const height = 600;
+
+    const svg = d3.select("#visualization-container")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+    const simulation = d3.forceSimulation(data.nodes)
+      .force("link", d3.forceLink(data.links).id(d => d.id).distance(100))
+      .force("charge", d3.forceManyBody().strength(-300))
+      .force("center", d3.forceCenter(width / 2, height / 2));
+
+    const link = svg.append("g")
+      .attr("stroke", "#aaa")
+      .attr("stroke-width", 1.5)
+      .selectAll("line")
+      .data(data.links)
+      .join("line");
+
+    const node = svg.append("g")
+      .attr("stroke", "#fff")
+      .attr("stroke-width", 1.5)
+      .selectAll("circle")
+      .data(data.nodes)
+      .join("circle")
+      .attr("r", 8)
+      .attr("fill", d => d.group === 1 ? "#4CAF50" : "#2196F3")
+      .call(d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended));
+
+    const label = svg.append("g")
+      .selectAll("text")
+      .data(data.nodes)
+      .join("text")
+      .attr("x", 8)
+      .attr("y", "0.31em")
+      .attr("font-size", "12px")
+      .attr("font-family", "sans-serif")
+      .text(d => d.id);
+
+    simulation.on("tick", () => {
+      link.attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
+
+      node.attr("cx", d => d.x)
+        .attr("cy", d => d.y);
+
+      label.attr("x", d => d.x)
+        .attr("y", d => d.y);
+    });
+
+    function dragstarted(event, d) {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+
+    function dragged(event, d) {
+      d.fx = event.x;
+      d.fy = event.y;
+    }
+
+    function dragended(event, d) {
+      if (!event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    }
+  </script>
+</body>
+</html>
 
