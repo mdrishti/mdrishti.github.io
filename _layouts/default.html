@@ -50,6 +50,66 @@
       margin-top: 20px;
     }
 
+.content-card_res {
+  background-color: #E8E3D4; /* Light earthy beige */
+  border-radius: 12px; /* Softer rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 1000px;
+  padding: 15px; /* Add some inner padding */
+}
+
+.content-card_res:hover {
+  transform: scale(1.05); /* Hover effect for slight zoom */
+  background-color: #CDE3DD; /* Teal-tinted light blue on hover */
+}
+
+.content-card_res img {
+  width: 100%; /* Make the image responsive */
+  max-width: 400px; /* Limit the image width */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 400px; /* Limit the image height */
+  object-fit: cover;
+  border-radius: 8px; /* Rounded corners for the image */
+  margin-bottom: 15px; /* Spacing below the image */
+}
+
+.content-card_res h3 {
+  color: #4C7A72; /* Teal blue */
+  font-size: 1.4rem; /* Slightly larger title font */
+  text-align: center; /* Center align the text */
+  margin: 10px 0;
+}
+
+.content-card_res p {
+  color: #5C534A; /* Warm earthy gray */
+  font-size: 0.80rem; /* Make the text slightly smaller */
+  margin-bottom: 10px;
+  line-height: 1.6; /* Better readability */
+  text-align: center; /* Center align the text */
+}
+
+.content-card_res a {
+  color: #4C7A72; /* Teal blue */
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: auto; /* Push the link to the bottom if possible */
+  display: inline-block;
+  padding: 8px 15px; /* Add padding to the link */
+  background-color: #F4E3CE; /* Soft beige for link background */
+  border-radius: 8px; /* Rounded link appearance */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.content-card_res a:hover {
+  background-color: #4C7A72; /* Teal blue on hover */
+  color: white; /* Contrast text on hover */
+}
+
     .content-card {
       background-color: #fff;
       border-radius: 8px;
@@ -61,30 +121,6 @@
       align-items: center;
       max-height: 1000px;
     }
-
-    .content-card_res {
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: transform 0.3s ease-in-out;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-height: 400px;
-    }
-
-    .content-card_res img {
-  width: 100%; /* Make the image responsive to the card's width */
-  max-width: 200px; /* Set a maximum width for the image */
-  height: auto; /* Maintain the aspect ratio */
-  max-height: 200px; /* Set a maximum height for the image */
-  object-fit: cover; /* Ensure the image scales properly */
-  border-radius: 5px; /* Optional: add rounded corners to the image */
-  margin: 0 auto; /* Center the image horizontally */
-  display: block; /* Ensure the image doesn't overflow */
-}
-
 
     .content-card:hover {
       transform: scale(1.05);
