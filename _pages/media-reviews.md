@@ -22,6 +22,16 @@ permalink: /media-reviews/
       </div>
   </div>
 
+  <!-- Card 2 -->
+  <div class="content-card_res">
+    <a href="https://open.substack.com/pub/whistlingthrush/p/du-boiss-data-portraits-whispers?r=1qcgb6&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" class="card-link">
+      <img src="https://substackcdn.com/image/fetch/w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc45027d3-fdbb-40cc-8e3a-6cf20e0c68bc_1532x2048.jpeg" alt="PHibiscus" style="height: 200px; object-fit: cover;">
+    </a>
+      <div class="content-text">
+  <h3>Du Bois’s data portraits: whispers from the past</h3>
+  <p>Interesting find in an art museum. The beginnings of Data Science! I finished reading all 144 pages in 2 hours</p>
+      </div>
+  </div>
 </div>
 
 <h1>Web series reviews</h1>
