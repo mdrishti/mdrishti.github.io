@@ -1,12 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }}</title>
   <style>
     /* Insert your styles here */
+
+.side-panel img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+  /* Side Panel Styling */
+  .side-panel {
+    position: fixed; /* Fix the panel in place */
+    top: 0; /* Space from the top */
+    right: 0 ; /* Align the panel to the right */
+    width: 50px; /* Width of the panel */
+    background-color: #f4f4f4; /* Teal background for the panel */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .side-panel a {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 20px;
+  }
+
+.side-panel ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.side-panel li {
+  margin: 10px 0;
+}
+
+  .side-panel a:hover {
+    color: #795548; /* Earthy brown highlight on hover */
+  }
+
+  /* Main Content Styling - Padding Right */
+  main {
+    padding-right: 100px; /* Space for the side panel, adjust if needed */
+  }
+
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .side-panel {
+      position: static; /* Make the panel static on small screens */
+      width: 100%;
+      padding: 10px;
+    }
+
+    main {
+      padding-right: 0; /* Remove the extra right padding on small screens */
+    }
+  }
+
     menu {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -180,6 +239,8 @@
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
+
+
   </style>
 </head>
 <body>
