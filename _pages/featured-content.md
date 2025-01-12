@@ -17,7 +17,7 @@ Many antibiotics make little discrimination between the commensals– the usual 
 
 You may think that the world is done with antibiotics while praying that an occasional bacterial infection resolves itself. Alas, this is not always the case and we have definitely not heard the end of antibiotics. Yet another antibiotic-diva -- the Lolamicin -- is in town! But this time with a twist that can save the commensals.
 
-In a new article in MicroBites, I wrote about the latest research on this topic.</p>
+I wrote about the latest research on this topic on MicroBites</p>
 	</div>
     </div>
     <div class="content-card">
@@ -29,7 +29,7 @@ In a new article in MicroBites, I wrote about the latest research on this topic.
 
 Did you know that microbes can also become 'chipko' (clingy)? But the long-lasting impact of these tenacious microbes may not be so positive always, at least, as shown by a recent study (https://lnkd.in/dpNr8tPH).
 
-Increased adherence to abiotic surfaces like plastic can drive a microbe's evolution. In a new article @ MicroBites I write about how yeast's ability to adhere to plastic can impact its virulence. 
+Increased adherence to abiotic surfaces like plastic can drive a microbe's evolution. In an article on MicroBites I write about how yeast's ability to adhere to plastic can impact its virulence. 
 
 These clingy microbes can use their clinginess to become even more clingy, filmy and filamenty!
 	</p>
@@ -40,7 +40,7 @@ These clingy microbes can use their clinginess to become even more clingy, filmy
 	    <img src="https://fems-microbiology.org/wp-content/uploads/2021/07/Microbe_Science-1024x672.png" alt="Content 3 Thumbnail"></a>
       <div class="content-text">
         <h3>We need to reduce the energy footprint of microbiology research</h3>
-	<p>Research labs worldwide produce around 5 million tons of plastic each year which harms the environment and our Planet’s health. While a lot of approaches to reduce, reuse and recycle lab equipment is practised, education for environmental integrity is still lacking. In this #FEMSmicroBlog, Disha Tandon discusses how microbiology researchers should set clear mandates for good lab practices to implement environmental integrity. </p>
+	<p>Research labs worldwide produce around 5 million tons of plastic each year which harms the environment and our Planet’s health. While a lot of approaches to reduce, reuse and recycle lab equipment is practised, education for environmental integrity is still lacking. In this #FEMSmicroBlog, I discuss how microbiology researchers should set clear mandates for good lab practices to implement environmental integrity. </p>
     </div>
     </div>
     <div class="content-card">
@@ -77,7 +77,7 @@ In a healthy environment, several microbes depend on each other promoting cross 
       <div class="content-text">
         <h3>A song of gut and bacteria</h3>
 	<p>A little too crass for LinkedIn.... yet did you ever wonder why you eat, sleep, poop and repeat at the same time everyday? Your body's biological clock has a huge role in this cycle.
-Along with your body's biological clock, there is another watch lurking around the corner of your gut. Read more about the symphony of these two clocks in my new article at MicroBites.</p>
+Along with your body's biological clock, there is another watch lurking around the corner of your gut. Read more about the symphony of these two clocks in my article at MicroBites.</p>
       </div>
     </div>
     <div class="content-card">
@@ -112,7 +112,7 @@ You can find the original study here: https://lnkd.in/eMpBpurs
 
 The little cells on the inside of our intestine form this layer called epithelium. And looks like this epithelium has a mind of its own! 
 
-Read about the sacrifice of the 'inner skin' in my new article: 'Martyrs of Infection' at MicroBites.</p>
+Read about the sacrifice of the 'inner skin' in my article: 'Martyrs of Infection' at MicroBites.</p>
       </div>
     </div>
     <div class="content-card">
