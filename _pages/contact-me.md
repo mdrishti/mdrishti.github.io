@@ -16,7 +16,7 @@ permalink: /contact-me/
     </form>
     <div id="thankYouMessage" style="display:none;">
         <h2>Thank You for Your Message!</h2>
-        <p>We will get back to you as soon as possible.</p>
+        <p>I will get back to you as soon as possible.</p>
     </div>
   </div>
 
