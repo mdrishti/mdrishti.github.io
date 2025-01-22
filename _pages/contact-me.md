@@ -14,7 +14,6 @@ permalink: /contact-me/
         <textarea id="message" name="message" required></textarea><br><br>
         <button type="submit">Send</button><br><br>
     </form>
-  </div>
     <div id="thankYouMessage" style="display:none;">
         <h2>Thank You for Your Message!</h2>
         <p>We will get back to you as soon as possible.</p>
@@ -44,4 +43,6 @@ permalink: /contact-me/
     });
   }
 </script>
+
+  </div>
 
