@@ -18,18 +18,22 @@ permalink: /contact-me/
         <h2>Thank You for Your Message!</h2>
         <p>We will get back to you as soon as possible.</p>
     </div>
+  </div>
+
 <script>
   function handleSubmit(event) {
     event.preventDefault(); // Prevent form submission (page refresh)
     
+    // Check if the function is triggered
+    console.log("Form submission triggered");
+    
     // Hide the form
-    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('contact-form').style.display = 'none';
     
     // Show the thank you message
     document.getElementById('thankYouMessage').style.display = 'block';
     
-    // Optionally, you can submit the form programmatically after showing the message
-    // This sends the form data to Formspree
+    // Optionally, submit the form data to Formspree
     fetch(event.target.action, {
       method: event.target.method,
       body: new FormData(event.target),
@@ -40,9 +44,10 @@ permalink: /contact-me/
       } else {
         console.error("Form submission failed");
       }
+    })
+    .catch(error => {
+      console.error("Error during form submission:", error);
     });
   }
 </script>
-
-  </div>
 
