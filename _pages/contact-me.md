@@ -5,13 +5,13 @@ permalink: /contact-me/
 ---
   <div id="contact-me" class="tab active">
     <h1>Contact Me</h1>
-    <form id="contact-form">
-      <label for="name">Name:</label><br>
-      <input type="text" id="name" name="name" required><br>
-      <label for="email">Email:</label><br>
-      <input type="email" id="email" name="email" required><br>
-      <label for="message">Message:</label><br>
-      <textarea id="message" name="message" required style="width: 50%; height: 200px;"></textarea><br>
-      <button type="submit">Send Message</button>
+    <form id="contact-form" action="https://formspree.io/f/mrbeznpg" method="POST">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="_replyto" required>
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Send</button>
     </form>
   </div>
