@@ -18,7 +18,7 @@ permalink: /media-reviews/
     </a>
       <div class="content-text">
   <h3>Purple hibiscus: Perspective of a teenage girl on civil unrest and domestic violence</h3>
-  <p>I found this book in a Boîtes de Livres in Switzerland. ‘Purple Hibiscus'’, the name felt like it is a fictional love-story and I almost did not pick it. But, then I read the synopsis...</p>
+  <p>I found this book in a Boîtes de Livres in Switzerland. ‘Purple Hibiscus'’, the name felt like it is a fictional love-story and I almost did not pick it. But, then I read the synopsis...“When Nigeria is shaken by a military coup, Kamibli’s father sends her to live with her aunt”.</p>
       </div>
   </div>
 
@@ -29,7 +29,19 @@ permalink: /media-reviews/
     </a>
       <div class="content-text">
   <h3>Du Bois’s data portraits: whispers from the past</h3>
-  <p>Interesting find in an art museum. The beginnings of Data Science! I finished reading all 144 pages in 2 hours</p>
+  <p>Interesting find in an art museum. This book acquainted me to beginnings of Data Science! I finished reading all 144 pages in 2 hours. Du Bois's visualizations were complex, intuitive, and neatly arranged in infographics, all drawn and coloured by hand! All published in 1900 - one hundred and twenty-four years back!</p>
+      </div>
+  </div>
+
+
+  <!-- Card 3 -->
+  <div class="content-card_res">
+    <a href="https://open.substack.com/pub/whistlingthrush/p/lise-meitner?r=1qcgb6&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" class="card-link">
+      <img src="https://substackcdn.com/image/fetch/w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7c3c8b05-3983-48c6-a1e6-cef5418749e5_800x589.jpeg" alt="LMeitner" style="height: 200px; object-fit: cover;">
+    </a>
+      <div class="content-text">
+  <h3>Lise Meitner: a scientist's spirit of friendship</h3>
+  <p>Though never awarded a Nobel prize, she received numerous honors, one of which was the ‘Otto Hahn Prize for Chemistry and Physics’. Some may call it a recognition of her efforts for the interpretation of nuclear fission. Yet, the irony of this honor is that Otto Hahn was the scientist with whom she collaborated for almost 32 years, 5 of which could be attributed to the discovery and interpretation of nuclear fission</p>
       </div>
   </div>
 </div>
