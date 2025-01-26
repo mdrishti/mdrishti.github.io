@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Media Reviews
+title: Blogs
 permalink: /media-reviews/
 ---
 <div id="research" class="tab active">
 
 
-<h1>Book reviews</h1>
+<h1>Blogs : book reviews, profiles and more..</h1>
 <p> Over the years, my stack of books has grown. Hard to keep-up with what I felt while I was reading the books. Notion notes or any other notes-organizing app wasn't helpful either. Then came <i>Substack</i>!. What better way to keep track of that than writing detailed reviews, once I have finished reading. Following is the compilation of my reviews on some of the books I read.</p>
 
 <div class="featured-container">
