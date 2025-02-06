@@ -7,6 +7,14 @@ permalink: /featured-content/
     <h1>Featured Content</h1>
     <div class="featured-container">
     <div class="content-card">
+    <a href="https://rukhmabai.com/the-one-who-believes-in-mentorship-beyond-research/">
+	    <img src="https://rukhmabai.com/wp-content/uploads/2025/01/Parekh_with_a_student-3-scaled.jpg" alt="Content 3 Thumbnail"></a>
+      <div class="content-text">
+        <h3>The one who believes in mentorship beyond research</h3>
+	<p>Profile of Professor Nita Parekh of IIIT-H. I wrote this for the outstanding Rukhmabai Initiatives. She spearheaded the creation of one of the first focused Master's programs in the field and constantly updates the curriculum to keep pace with the rapidly evolving discipline. A key example is her insistence on including a shell scripting course, a practical skill often overlooked in biology education. Fond memories of the interview sessions with her and her colleagues. </p>
+      </div>
+      </div>
+    <div class="content-card">
       <a href="https://micro-bites.org/2024/07/08/the-good-antibiotic/">
 	      <img src="https://microbitesorg.wordpress.com/wp-content/uploads/2024/07/lolamicin_antibiotic_bacteria.png" alt="Content 1 Thumbnail"></a>
       		<div class="content-text">
@@ -125,5 +133,6 @@ Read about the sacrifice of the 'inner skin' in my article: 'Martyrs of Infectio
 Also tried my hand at illustrating the story through a nerdy-microbey cartoon!</p>
       </div>
       </div>
+
 </div>
 </div>
